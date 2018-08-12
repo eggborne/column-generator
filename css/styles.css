@@ -1,15 +1,7 @@
 body {
-  /* font-size:12px; */
-  
+  font-size:12px;
 }
 #stage {
-  width:90%;
-  height:100%;
-  margin:0 auto;
-  padding:10%;
+  padding:5%;
   background:rgb(213, 239, 248);
-}
-.bordered {
-  border: 2px solid gray;
-  height: 100px;
 }

@@ -2,7 +2,7 @@ function ColumnGenerator() {
 	this.insertLayout = function(layoutArray,destination,bordered) {
 		var parent
 		destination ? parent = destination : parent = "#stage"
-		var border
+		var border = ''
 		bordered ? border = ';border: 1px solid black' : false
 		var rows = layoutArray.length
 		for (var r=0;r<rows;r++) {
@@ -16,14 +16,15 @@ function ColumnGenerator() {
 			// put the columns in
 			for (var c=0;c<columns;c++) {
 				var columnWidth = layoutArray[r][0][c]
-				newRow.append(`<div id="column-`+r+`-`+c+`" class="col-md-`+columnWidth+`" style="height:`+rowHeight+border+`"></div>`)
+				newRow.append(`<div id="column-`+r+`-`+c+`" class="col-xs-`+columnWidth+` generated" style="height:`+rowHeight+border+`"></div>`)
 			}
 		}
 	}
 }
-// var exampleLayout = 
-// [
-//   [[4,4,4],'300px'],
-//   [[4,3,2,3],'600px'],
-//   [[4,4,4],'100px']
-// ]
+var exampleLayout = 
+[
+  [[4,4,4],'280px'],
+  [[4,3,2,3],'60px'],
+  [[4,4,4],'100px'],
+  [[1,2,1,3,5],'200px']
+]
