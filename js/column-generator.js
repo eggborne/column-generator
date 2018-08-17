@@ -1,14 +1,17 @@
 $(function(){
-
+	new ColumnGenerator().insertLayout('grid',exampleLayout,'#stage',true,true)
 })
 function ColumnGenerator() {
-	this.insertLayout = function(id,layoutArray,destination,bordered) {
+	this.insertLayout = function(id,layoutArray,destination,bordered,labeled) {
 		var parent
 		destination ? parent = destination : parent = "#stage"
-		var border = ''
+		var border = '';
+		var columnLabel = '';
 		bordered ? border = ';border: 1px solid black' : false
 		var rows = layoutArray.length
+		console.log("making " + rows + " rows")
 		$(parent).append('<div id='+id+'></div>')
+		$(parent).prepend('<h3>grid id: #'+id+'</h3>')
 		for (var r=0;r<rows;r++) {
 			var columns = layoutArray[r][0].length
 			// set the row's height if specified
@@ -19,8 +22,11 @@ function ColumnGenerator() {
 			var newRow = $('#row-'+r)
 			// put the columns in
 			for (var c=0;c<columns;c++) {
+				if (labeled) {
+					columnLabel = `#column-`+r+`-`+c+`<p>height:`+rowHeight
+				}
 				var columnWidth = layoutArray[r][0][c]
-				newRow.append(`<div id="column-`+r+`-`+c+`" class="col-xs-`+columnWidth+` generated" style="height:`+rowHeight+border+`">#column-`+r+`-`+c+`</div>`)
+				newRow.append(`<div id="column-`+r+`-`+c+`" class="col-xs-`+columnWidth+` generated" style="height:`+rowHeight+border+`">`+columnLabel+`</div>`)
 			}
 		}
 	}
